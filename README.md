@@ -1,6 +1,5 @@
-# Nuxt Minimal Starter
+# Wellness Tracker App with Nuxt.js
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
 
@@ -34,8 +33,6 @@ pnpm dev
 # yarn
 yarn dev
 
-# bun
-bun run dev
 ```
 
 ## Production
@@ -51,9 +48,6 @@ pnpm build
 
 # yarn
 yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
@@ -67,9 +61,6 @@ pnpm preview
 
 # yarn
 yarn preview
-
-# bun
-bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
