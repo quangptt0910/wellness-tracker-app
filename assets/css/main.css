@@ -1,0 +1,223 @@
+@import "tailwindcss";
+@import "@nuxt/ui-pro";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for Wellness Shop */
+
+/* Line clamp utilities */
+.wellness-line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.wellness-line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Grid pattern background */
+.wellness-grid-pattern {
+    background-image:
+            linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* Animations */
+@keyframes wellness-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wellness-fade-in {
+    animation: wellness-fade-in 1s ease-out;
+}
+
+/* Filter input styles */
+.wellness-filter-input input {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.wellness-filter-input input:focus {
+    border-color: rgba(147, 197, 253, 1);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dark .wellness-filter-input input {
+    background-color: rgba(31, 41, 55, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Filter select styles */
+.wellness-filter-select button {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.wellness-filter-select button:hover {
+    border-color: rgba(147, 197, 253, 1);
+}
+
+.dark .wellness-filter-select button {
+    background-color: rgba(31, 41, 55, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Cart slideout styles */
+.wellness-cart-slideout {
+    backdrop-filter: blur(4px);
+}
+
+/* Product card hover effects */
+@media (hover: hover) {
+    .group:hover .group-hover\:scale-110 {
+        transform: scale(1.1);
+    }
+
+    .group:hover .group-hover\:opacity-100 {
+        opacity: 1;
+    }
+
+    .group:hover .group-hover\:translate-y-0 {
+        transform: translateY(0);
+    }
+
+    .group:hover .group-hover\:translate-x-\[-200\%\] {
+        transform: translateX(-200%);
+    }
+}
+
+/* Custom gradient utilities for older browsers */
+@supports not (background-clip: text) {
+    .bg-gradient-to-r.bg-clip-text.text-transparent {
+        background: linear-gradient(to right, #2563eb, #7c3aed);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+}
+
+/* Enhanced backdrop blur for better browser support */
+@supports not (backdrop-filter: blur(4px)) {
+    .backdrop-blur-md {
+        background-color: rgba(255, 255, 255, 0.85);
+    }
+
+    .dark .backdrop-blur-md {
+        background-color: rgba(17, 24, 39, 0.85);
+    }
+}
+
+/* Responsive text scaling */
+@media (max-width: 640px) {
+    .text-5xl {
+        font-size: 3rem;
+        line-height: 1;
+    }
+
+    .text-6xl {
+        font-size: 4rem;
+        line-height: 1;
+    }
+}
+
+/* Enhanced loading animation */
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Smooth transitions for all interactive elements */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Custom opacity utilities for precise control */
+.from-opacity-5 {
+    --tw-gradient-from-opacity: 0.05;
+}
+
+.to-opacity-5 {
+    --tw-gradient-to-opacity: 0.05;
+}
+
+.from-opacity-20 {
+    --tw-gradient-from-opacity: 0.2;
+}
+
+.to-opacity-20 {
+    --tw-gradient-to-opacity: 0.2;
+}
+
+.bg-opacity-50 {
+    --tw-bg-opacity: 0.5;
+}
+
+.bg-opacity-70 {
+    --tw-bg-opacity: 0.7;
+}
+
+.bg-opacity-80 {
+    --tw-bg-opacity: 0.8;
+}
+
+.bg-opacity-90 {
+    --tw-bg-opacity: 0.9;
+}
+
+.border-opacity-20 {
+    --tw-border-opacity: 0.2;
+}
+
+.border-opacity-50 {
+    --tw-border-opacity: 0.5;
+}
+
+.text-opacity-60 {
+    --tw-text-opacity: 0.6;
+}
+
+.text-opacity-80 {
+    --tw-text-opacity: 0.8;
+}
+
+/* Print styles */
+@media print {
+    .wellness-grid-pattern,
+    .backdrop-blur-md {
+        display: none;
+    }
+
+    .bg-gradient-to-br,
+    .bg-gradient-to-r {
+        background: white !important;
+        color: black !important;
+    }
+}
