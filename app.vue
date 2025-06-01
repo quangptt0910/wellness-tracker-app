@@ -7,7 +7,7 @@ import { en } from '@nuxt/ui/locale'
 <!--    <NuxtWelcome />-->
   <UApp :locale="en">
     <NuxtLayout>
-      <NuxtPage/>
+      <NuxtPage class="min-h-screen bg-primary-100"/>
     </NuxtLayout>
   </UApp>
 </template>

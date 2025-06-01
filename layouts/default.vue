@@ -1,6 +1,6 @@
 <!-- layouts/default.vue -->
 <script setup lang="ts">
-import { useNavigationMenu } from '@/composables/useNavigationMenu';
+import { useNavigationMenu } from '~/composables/useNavigationMenu';
 
 const { items } = useNavigationMenu();
 const searchQuery = ref('');
@@ -9,80 +9,63 @@ const searchQuery = ref('');
 <template>
   <div class="min-h-screen flex flex-col">
     <!-- Enhanced Header with Nuxt UI Pro styling -->
-    <header class="border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 sticky top-0 z-50 shadow-sm">
+    <header class="border-b border-gray-200 accent-primary-800 bg-primary-200
+     sticky top-0 z-50 shadow-sm">
       <UContainer class="py-3">
-        <div class="grid grid-cols-12 gap-4">
-          <!-- App name pushed to far left -->
-          <div class="col-span-2 flex items-center">
+        <div class="flex items-center justify-between gap-6">
+        <!-- App name pushed to far left -->
+          <div class="flex items-center flex-shrink-0">
             <NuxtLink
                 to="/"
                 class="text-xl font-bold tracking-tight flex items-center gap-2"
             >
-              <UIcon name="i-heroicons-heart" class="text-primary-600 w-6 h-6" />
-              <span class="text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                Wellness Tracker
+              <UIcon name="i-heroicons-heart" class="text-secondary-500 w-6 h-6" />
+              <span class="text-primary-950 hover:text-primary-600  transition-colors">
+                PureDose
               </span>
             </NuxtLink>
           </div>
 
-          <!-- Centered search bar with enhancements -->
-          <div class="col-span-8 flex justify-center">
+
+          <!-- Centered search bar -->
+          <div class="flex flex-1 justify-center">
             <UInput
                 v-model="searchQuery"
-                placeholder="Search supplements, vitamins, proteins..."
-                icon="i-heroicons-magnifying-glass"
+                placeholder="Search supplements products..."
+                trailing-icon="i-heroicons-magnifying-glass"
                 size="xl"
-                :ui="{
-                base: 'max-w-xl w-full shadow-sm',
-                trailingIcon: { base: 'text-gray-400 dark:text-gray-500' },
-                padding: { l: 'px-5 py-2.5' }
-              }"
+                variant="outline"
+                color="primary"
                 autocomplete="off"
-                class="transition-all duration-300 "
+                class="max-w-lg w-full rounded-full shadow-lg transition-all duration-300 hover:shadow-xl focus-within:shadow-xl [&>input]:rounded-full [&>input]:bg-primary-50 [&>input]:text-primary-900 [&>input]:placeholder-primary-400 [&>input]:ring-primary-300 [&>input]:focus:ring-primary-500 [&>input]:focus:ring-2"
             >
+              <template v-if="searchQuery?.length" #trailing>
                 <UButton
-                    v-if="searchQuery"
-                    color="info"
+                    color="primary"
                     variant="ghost"
-                    icon="i-heroicons-x-mark"
-                    :ui="{ rounded: 'rounded-full' }"
+                    icon="i-lucide-circle-x"
                     :padded="false"
-                    class="hover:bg-gray-200 dark:hover:bg-gray-700"
+                    class="rounded-full hover:scale-110 transition-transform duration-200 text-primary-600 hover:bg-primary-100"
                     @click="searchQuery = ''"
                 />
+              </template>
             </UInput>
           </div>
 
           <!-- Navigation menu with improved styling -->
-          <div class="col-span-2 flex justify-end">
+          <div class="flex items-center flex-shrink-0">
             <UNavigationMenu
+                arrow
+                content-orientation="vertical"
                 :items="items"
-                :unmount-on-hide="false"
                 :ui="{
-                wrapper: 'gap-1',
-                item: {
-                  base: 'group relative',
-                  padding: 'px-3 py-2',
-                  rounded: 'rounded-lg',
-                  active: 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900',
-                  inactive: 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-                }
+                root: 'gap-1',
+                item: 'px-3 py-2 rounded-lg text-primary-600 hover:text-primary-600 hover:bg-primary-600',
               }"
             >
-              <template #default="{ item, open }">
-                <span class="flex items-center gap-1.5">
-                  <UIcon :name="item.icon" class="w-5 h-5 flex-shrink-0" />
-                  <span class="truncate">{{ item.label }}</span>
-                  <UIcon
-                      v-if="item.children"
-                      name="i-heroicons-chevron-down"
-                      class="w-4 h-4 transition-transform duration-200"
-                      :class="[open && 'rotate-180']"
-                  />
-                </span>
-              </template>
             </UNavigationMenu>
           </div>
+
         </div>
       </UContainer>
     </header>

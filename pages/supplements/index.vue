@@ -107,12 +107,11 @@ const formatPrice = (price: number) => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950">
+  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
     <!-- Animated Background Pattern -->
     <div class="absolute inset-0 wellness-grid-pattern opacity-5"></div>
-
     <!-- Header -->
-    <div class="relative bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 backdrop-blur-md shadow-lg border-b border-white border-opacity-20">
+    <div class="relative bg-white bg-opacity-80  backdrop-blur-md shadow-lg border-b border-white border-opacity-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
           <div class="flex items-center space-x-4">

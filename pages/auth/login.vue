@@ -46,7 +46,7 @@ const submit = async () => {
         </div>
 
       <UForm :state="state" @submit="submit" class="space-y-4">
-        <UFormField label="Email" name="email" required :ui="{label : 'text-base font-medium mb-3'}" >
+        <UFormField label="Email" name="email" required :ui="{label : 'text-base font-medium mb-3' }" >
           <UInput class="w-full " v-model="state.email" type="email" placeholder="your@email.com" icon="i-heroicons-envelope" autofocus size="xl"/>
         </UFormField>
 
@@ -69,12 +69,7 @@ const submit = async () => {
             size="lg"
             :loading="isLoading"
             label="Sign in"
-            color="primary"
-            :ui="{
-            base: 'transition-all duration-200',
-            padding: { lg: 'px-4 py-3' },
-            rounded: 'rounded-lg'
-          }"
+            color="secondary"
         />
       </UForm>
 
