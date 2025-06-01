@@ -85,6 +85,20 @@ const submit = async () => {
         </p>
       </div>
     </UPageCard>
+
+    <!-- Custom utility classes -->
+    <span class="text-secondary">This uses text-secondary utility</span>
+    <div class="bg-secondary text-white p-4">Secondary background</div>
+
+    <!-- Various secondary shades -->
+    <div class="space-y-2">
+      <div class="bg-secondary-50 p-2">Very light fuchsia</div>
+      <div class="bg-secondary-200 p-2">Light fuchsia</div>
+      <div class="bg-secondary-400 p-2 text-white">Medium fuchsia</div>
+      <div class="bg-secondary-600 p-2 text-white">Dark fuchsia</div>
+      <div class="bg-secondary-800 p-2 text-white">Very dark fuchsia</div>
+    </div>
+
   </div>
 </template>
 

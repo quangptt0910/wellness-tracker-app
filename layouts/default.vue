@@ -19,7 +19,7 @@ const searchQuery = ref('');
                 to="/"
                 class="text-xl font-bold tracking-tight flex items-center gap-2"
             >
-              <UIcon name="i-heroicons-heart" class="text-secondary-500 w-6 h-6" />
+              <UIcon name="i-heroicons-heart" class="text-secondary-600 w-6 h-6" />
               <span class="text-primary-950 hover:text-primary-600  transition-colors">
                 PureDose
               </span>

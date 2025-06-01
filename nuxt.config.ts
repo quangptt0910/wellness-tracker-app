@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'light',
     fallback: 'light',
+    classSuffix: '',
   },
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
@@ -21,14 +22,24 @@ export default defineNuxtConfig({
   ],
   ui: {
     theme: {
-      colors:['primary', 'secondary','info', 'success', 'warning', 'danger','error'],
-    }
+      colors:['primary', 'secondary', 'info', 'success', 'warning', 'danger','error'],
+    },
   },
-  css: ['~/assets/css/main.css'],
+ // css: ['~/assets/css/main.css'],
 
   tailwindcss: {
+    exposeConfig: false,
     cssPath: '~/assets/css/main.css',   // ensures the module keys off your file
     configPath: 'tailwind.config.ts',    // default
-    viewer: false                         // opens the super-visualizer
+    viewer: true // opens the super-visualizer
+  },
+
+  app: {
+    head: {
+      htmlAttrs: {
+        'data-theme': 'light',
+        class: 'light'
+      }
+    }
   }
 })

@@ -1,25 +1,10 @@
 @import "tailwindcss";
 @import "@nuxt/ui-pro";
 
-/* Base styles */
-body {
-    @apply bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-50;
-}
+/* Force light mode and apply global theme colors */
 
-/* Force light mode if you prefer */
-:root, .light {
-    --color-primary-50: #ecfdf5;
-    --color-primary-100: #d1fae5;
-    --color-primary-200: #a7f3d0;
-    --color-primary-300: #6ee7b7;
-    --color-primary-400: #34d399;
-    --color-primary-500: #10b981;
-    --color-primary-600: #059669;
-    --color-primary-700: #047857;
-    --color-primary-800: #065f46;
-    --color-primary-900: #064e3b;
-    --color-primary-950: #022c22;
 
+.root, .light {
     --color-secondary-50: #fdf4ff;
     --color-secondary-100: #fae8ff;
     --color-secondary-200: #f5d0fe;
@@ -31,67 +16,134 @@ body {
     --color-secondary-800: #86198f;
     --color-secondary-900: #701a75;
     --color-secondary-950: #4a044e;
+
+    --ui-color-secondary-50: #fdf4ff;
+    --ui-color-secondary-100: #fae8ff;
+    --ui-color-secondary-200: #f5d0fe;
+    --ui-color-secondary-300: #f0abfc;
+    --ui-color-secondary-400: #e879f9;
+    --ui-color-secondary-500: #d946ef;
+    --ui-color-secondary-600: #c026d3;
+    --ui-color-secondary-700: #a21caf;
+    --ui-color-secondary-800: #86198f;
+    --ui-color-secondary-900: #701a75;
+    --ui-color-secondary-950: #4a044e;
+
+    --secondary-50: var(--color-secondary-50);
+    --secondary-100: var(--color-secondary-100);
+    --secondary-200: var(--color-secondary-200);
+    --secondary-300: var(--color-secondary-300);
+    --secondary-400: var(--color-secondary-400);
+    --secondary-500: var(--color-secondary-500);
+    --secondary-600: var(--color-secondary-600);
+    --secondary-700: var(--color-secondary-700);
+    --secondary-800: var(--color-secondary-800);
+    --secondary-900: var(--color-secondary-900);
+    --secondary-950: var(--color-secondary-950);
+    --ui-secondary: var(--color-secondary-500);
 }
-/* Global text styles */
 @layer base {
+    /* Root element styling */
     html {
-        @apply text-text; /* Apply default text color */
-        font-size: 100%; /* Base font size (16px) */
+        font-size: 100%;
+        @apply bg-primary-50 text-primary-950;
     }
 
     body {
-        @apply text-base; /* Apply custom base font size */
-        @apply bg-primary-50; /* Your primary-50 background */
+        @apply bg-primary-50 text-primary-950;
+        /* Force override any dark mode styles */
+        background-color: #ecfdf5 !important;
+        color: #022c22 !important;
     }
 
-    /* Global typography */
-    h1 {
-        @apply text-4xl font-bold text-text;
+    /* Force light mode globally - disable dark mode */
+    .dark, [data-theme="dark"] {
+        @apply !bg-primary-50 !text-primary-950;
+        background-color: #ecfdf5 !important;
+        color: #022c22 !important;
     }
 
-    h2 {
-        @apply text-3xl font-bold text-text;
-    }
-
-    h3 {
-        @apply text-2xl font-bold text-text;
-    }
-
-    h4 {
-        @apply text-xl font-bold text-text;
-    }
-
-    p {
-        @apply mb-4;
-    }
-
-    a {
-        @apply text-primary-600 hover:text-primary-800 transition-colors;
-    }
-
-    /* Disable dark mode */
-    .dark {
-        @apply !bg-primary-50 !text-text;
-
-        * {
-            @apply !bg-primary-50 !text-text;
-        }
+    /* Ensure all child elements respect the light theme */
+    .dark *, [data-theme="dark"] * {
+        @apply !bg-transparent;
+        color: inherit !important;
     }
 }
-/* Component-specific overrides */
-[type='text'],
-[type='email'],
-[type='password'],
-textarea,
-select {
-    @apply focus:ring-primary-500 focus:border-primary-500;
+
+/* Component-specific overrides for form elements */
+@layer components {
+    /* Form inputs */
+    [type='text'],
+    [type='email'],
+    [type='password'],
+    textarea,
+    select {
+        @apply bg-white border-primary-200 text-primary-950 placeholder-primary-400;
+        @apply focus:ring-primary-500 focus:border-primary-500;
+    }
+
+    /* Override Nuxt UI components to use our theme */
+    .u-input input {
+        @apply bg-white text-primary-950 placeholder-primary-400;
+    }
+
+    .u-button-primary {
+        @apply bg-primary-600 hover:bg-primary-700 text-white;
+    }
+
+    .u-button-secondary {
+        @apply bg-secondary-600 hover:bg-secondary-700 text-white;
+    }
+
+    /* Card components */
+    .u-card {
+        @apply bg-white border-primary-200;
+    }
+
+    /* Navigation menu */
+    .u-navigation-menu {
+        @apply bg-white;
+    }
+
 }
 
-/* Notification toast */
+/* Notification toasts */
 .toast-primary {
-    @apply bg-primary-500 text-white;
+    @apply bg-primary-600 text-white;
 }
 
 .toast-secondary {
-    @apply bg-secondary-500 text-white;
+    @apply bg-secondary-600 text-white;
+}
+
+/* Custom utilities */
+@layer utilities {
+    .text-theme-primary {
+        @apply text-primary-950;
+    }
+
+    .text-theme-secondary {
+        @apply text-primary-800;
+    }
+
+    .bg-theme-primary {
+        @apply bg-primary-50;
+    }
+
+    .bg-theme-surface {
+        @apply bg-white;
+    }
+
+    /* Add specific secondary color utilities */
+    .text-secondary {
+        @apply text-secondary-600;
+    }
+
+    .bg-secondary {
+        @apply bg-secondary-600;
+    }
+
+    .border-secondary {
+        @apply border-secondary-600;
+    }
 }
