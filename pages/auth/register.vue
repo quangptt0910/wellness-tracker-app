@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'auth'
+})
+
 // Reactive state
 const state = reactive({
   firstName: '',
@@ -47,8 +51,8 @@ const submit = async () => {
 </script>
 
 <template>
-  <div class="flex items-center justify-center-safe gap-4 p-4">
-    <UPageCard class="max-w-md w-full">
+  <div class="flex items-start justify-center-safe gap-4 p-4 bg-primary-100">
+    <UPageCard class="max-w-md w-full mt-6 bg-primary-50">
       <div class="py-6">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white text-center block">
           Create an account
@@ -88,8 +92,6 @@ const submit = async () => {
             color="primary"
             :ui="{
             base: 'transition-all duration-200',
-            padding: { lg: 'px-4 py-3' },
-            rounded: 'rounded-lg'
           }"
         />
       </UForm>

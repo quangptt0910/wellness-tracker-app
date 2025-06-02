@@ -9,7 +9,7 @@ useColorMode().preference = 'light'
 <!--    <NuxtWelcome />-->
   <UApp :locale="en" class="light">
     <NuxtLayout>
-      <NuxtPage class="min-h-screen"/>
+      <NuxtPage class="min-h-screen bg-primary-50"/>
     </NuxtLayout>
   </UApp>
 </template>

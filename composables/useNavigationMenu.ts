@@ -4,7 +4,12 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 export const useNavigationMenu = () => {
     const items = ref<NavigationMenuItem[]>([
         {
-            label: 'Supplements',
+            label: 'HOME',
+            to: '/',
+            icon: 'i-lucide-home',
+        },
+        {
+            label: 'SUPPLEMENT',
             icon: 'i-lucide-pill',
             to: '/supplements',
             children: [
@@ -23,21 +28,21 @@ export const useNavigationMenu = () => {
             ]
         },
         {
-          label: 'Your Tracker',
+          label: 'YOUR TRACKER',
           icon: 'i-lucide-activity',
         },
-        {
-            label: 'Login',
-            icon: 'i-lucide-user',
-            to: '/auth/login',
-            children: [
-                {
-                    label: 'Register',
-                    to: '/auth/register',
-                    icon: 'i-lucide-user-plus'
-                }
-            ]
-        }
+        // {
+        //     label: 'Login',
+        //     icon: 'i-lucide-user',
+        //     to: '/auth/login',
+        //     children: [
+        //         {
+        //             label: 'Register',
+        //             to: '/auth/register',
+        //             icon: 'i-lucide-user-plus'
+        //         }
+        //     ]
+        // }
     ]);
 
     return { items };

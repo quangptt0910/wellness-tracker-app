@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'auth'
+})
 // Reactive state
 const state = reactive({
   email: '',
@@ -34,8 +37,8 @@ const submit = async () => {
 </script>
 
 <template>
-  <div class="flex items-center justify-center-safe gap-4 p-4">
-    <UPageCard class="max-w-md w-full">
+  <div class="flex items-start justify-center p-2 pt-0 bg-primary-100">
+    <UPageCard class="max-w-lg w-full bg-primary-50 mt-8">
         <div class="py-6">
           <h1 class="text-3xl font-bold text-gray-900 dark:text-white text-center block">
             Welcome back
@@ -69,7 +72,7 @@ const submit = async () => {
             size="lg"
             :loading="isLoading"
             label="Sign in"
-            color="secondary"
+            class="bg-primary-400"
         />
       </UForm>
 
@@ -86,18 +89,6 @@ const submit = async () => {
       </div>
     </UPageCard>
 
-    <!-- Custom utility classes -->
-    <span class="text-secondary">This uses text-secondary utility</span>
-    <div class="bg-secondary text-white p-4">Secondary background</div>
-
-    <!-- Various secondary shades -->
-    <div class="space-y-2">
-      <div class="bg-secondary-50 p-2">Very light fuchsia</div>
-      <div class="bg-secondary-200 p-2">Light fuchsia</div>
-      <div class="bg-secondary-400 p-2 text-white">Medium fuchsia</div>
-      <div class="bg-secondary-600 p-2 text-white">Dark fuchsia</div>
-      <div class="bg-secondary-800 p-2 text-white">Very dark fuchsia</div>
-    </div>
 
   </div>
 </template>
