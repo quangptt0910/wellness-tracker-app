@@ -20,6 +20,10 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode'
   ],
+  pinia: {
+    storesDirs: ['./stores/**'],
+
+  },
   ui: {
     theme: {
       colors:['primary', 'secondary', 'info', 'success', 'warning', 'danger','error'],
@@ -40,6 +44,12 @@ export default defineNuxtConfig({
         'data-theme': 'light',
         class: 'light'
       }
+    }
+  },
+
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.API_BASE_URL || 'http://localhost:8080'
     }
   }
 })

@@ -1,19 +1,30 @@
 <script setup lang="ts">
+import {useAuthStore} from "~/store/auth";
+import type {RegisterCredentials} from "~/types/auth";
+
 definePageMeta({
-  layout: 'auth'
+  layout: 'auth',
+  middleware: () => {
+    const authStore = useAuthStore()
+    if (authStore.isAuthenticated) {
+      return navigateTo('/')
+    }
+  }
 })
 
-// Reactive state
-const state = reactive({
-  firstName: '',
-  lastName: '',
-  email: '',
+const state = reactive<RegisterCredentials>({
+  name: '',
+  surname: '',
+  username: '',
   password: '',
-  confirmPassword: ''
+  email: '',
+  role: 'ROLE_USER', // Default role
+  confirmPassword: '',
 })
 
 const isLoading = ref(false)
 const toast = useToast()
+const authStore = useAuthStore()
 
 // Registration method
 const submit = async () => {
@@ -29,14 +40,14 @@ const submit = async () => {
 
   isLoading.value = true
   try {
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await authStore.register(state)
     toast.add({
       title: 'Account created',
       description: 'Welcome to our platform!',
       icon: 'i-heroicons-check-circle',
       color: 'success'
     })
-    // await navigateTo('/dashboard')
+     await navigateTo('/')
   } catch (error) {
     toast.add({
       title: 'Registration failed',
@@ -63,12 +74,16 @@ const submit = async () => {
       </div>
 
       <UForm :state="state" @submit="submit" class="space-y-4">
-        <UFormField label="First Name" name="firstName" required :ui="{label : 'text-base font-medium mb-3'}">
-          <UInput class="w-full" v-model="state.firstName" type="text" placeholder="John" icon="i-heroicons-user" autofocus  size="xl"/>
+        <UFormField label="First Name" name="Name" required :ui="{label : 'text-base font-medium mb-3'}">
+          <UInput class="w-full" v-model="state.name" type="text" placeholder="Name" icon="i-heroicons-user" autofocus  size="xl"/>
         </UFormField>
 
-        <UFormField label="Last Name" name="lastName" required :ui="{label : 'text-base font-medium mb-3'}">
-          <UInput class="w-full" v-model="state.lastName" type="text" placeholder="Doe" icon="i-heroicons-user" size="xl"/>
+        <UFormField label="Last Name" name="Surname" required :ui="{label : 'text-base font-medium mb-3'}">
+          <UInput class="w-full" v-model="state.surname" type="text" placeholder="Surname" icon="i-heroicons-user" size="xl"/>
+        </UFormField>
+
+        <UFormField label="Username" name="Username" required :ui="{label : 'text-base font-medium mb-3'}">
+          <UInput class="w-full" v-model="state.username" type="text" placeholder="User123" icon="i-heroicons-user" size="xl"/>
         </UFormField>
 
         <UFormField label="Email" name="email" required :ui="{label : 'text-base font-medium mb-3'}">

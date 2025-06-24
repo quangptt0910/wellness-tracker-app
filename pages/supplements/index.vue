@@ -110,108 +110,15 @@ const formatPrice = (price: number) => {
   <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
     <!-- Animated Background Pattern -->
     <div class="absolute inset-0 wellness-grid-pattern opacity-5"></div>
-    <!-- Header -->
-    <div class="relative bg-white bg-opacity-80  backdrop-blur-md shadow-lg border-b border-white border-opacity-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-          <div class="flex items-center space-x-4">
-            <div class="relative">
-              <div class="absolute inset-0 bg-gradient-to-r rounded-full blur opacity-75 animate-pulse"></div>
-              <UIcon name="i-heroicons-heart" class="relative w-10 h-10 text-blue-500" />
-            </div>
-            <div>
-              <h1 class="text-3xl font-bold bg-gradient-to-r bg-clip-text text-transparent">
-                WellnessShop
-              </h1>
-              <p class="text-sm text-gray-500 dark:text-gray-400">Premium Health & Wellness</p>
-            </div>
-          </div>
-
-          <UButton
-              @click="showCart = true"
-              variant="outline"
-              size="lg"
-              class="relative overflow-hidden group hover:scale-105 transition-all duration-300"
-              :badge="cartItemCount || undefined"
-          >
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-10 transition-opacity"></div>
-            <UIcon name="i-heroicons-shopping-cart" class="w-5 h-5 mr-2" />
-            Cart {{ cartItemCount > 0 ? `(${cartItemCount})` : '' }}
-          </UButton>
-        </div>
-      </div>
-    </div>
 
     <!-- Main Content -->
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <!-- Hero Section -->
-      <div class="text-center mb-16">
-        <div class="relative inline-block">
-          <h2 class="text-5xl md:text-6xl font-bold bg-gradient-to-r bg-clip-text text-transparent mb-6 wellness-fade-in">
-            Premium Health Supplements
-          </h2>
-          <div class="absolute -inset-4 bg-gradient-to-r  blur-xl rounded-full"></div>
-        </div>
-
-        <!-- Stats -->
-        <div class="flex justify-center space-x-8 mt-8">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-blue-600">{{ supplements?.length || 0 }}+</div>
-            <div class="text-sm text-gray-500">Products</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-purple-600">100%</div>
-            <div class="text-sm text-gray-500">Natural</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-indigo-600">5★</div>
-            <div class="text-sm text-gray-500">Rated</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Filters -->
-      <div class="bg-white bg-opacity-70 dark:bg-gray-800 dark:bg-opacity-70 backdrop-blur-md rounded-2xl shadow-xl p-8 mb-12 border border-white border-opacity-20">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="relative">
-            <UInput
-                v-model="searchQuery"
-                placeholder="Search supplements..."
-                icon="i-heroicons-magnifying-glass"
-                size="lg"
-                class="wellness-filter-input"
-            />
-          </div>
-
-          <USelectMenu
-              v-model="selectedCategory"
-              :options="categories.map(cat => ({
-              label: cat === 'all' ? 'All Categories' : cat,
-              value: cat,
-              icon: getCategoryIcon(cat)
-            }))"
-              size="lg"
-              class="wellness-filter-select"
-          />
-
-          <USelectMenu
-              v-model="sortBy"
-              :options="[
-              { label: 'Name A-Z', value: 'name' },
-              { label: 'Price: Low to High', value: 'price-low' },
-              { label: 'Price: High to Low', value: 'price-high' }
-            ]"
-              size="lg"
-              class="wellness-filter-select"
-          />
-        </div>
-      </div>
 
       <!-- Loading State -->
       <div v-if="pending" class="flex flex-col justify-center items-center py-20">
         <div class="relative">
           <div class="w-16 h-16 border-4 border-blue-200 rounded-full animate-spin"></div>
-          <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin absolute top-0"></div>
+          <div class="w-16 h-16 border-4  border-t-transparent rounded-full animate-spin absolute top-0"></div>
         </div>
         <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">Loading premium supplements...</p>
       </div>
@@ -231,15 +138,15 @@ const formatPrice = (price: number) => {
         <div
             v-for="supplement in filteredSupplements"
             :key="supplement.id"
-            class="group relative bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white border-opacity-20 hover:border-blue-200 hover:border-opacity-50 overflow-hidden"
+            class="group relative bg-white bg-opacity-80  backdrop-blur-md rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white border-opacity-20 hover:border-blue-200 hover:border-opacity-50 overflow-hidden"
         >
           <!-- Gradient Overlay -->
-          <div class="absolute inset-0 bg-gradient-to-br from-blue-500 from-opacity-5 to-purple-500 to-opacity-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute inset-0 bg-gradient-to-br  to-opacity-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
           <!-- Product Image with Gradient -->
-          <div class="relative h-56 bg-gradient-to-br from-blue-100 via-purple-50 to-indigo-100 dark:from-blue-900 dark:from-opacity-50 dark:via-purple-900 dark:via-opacity-50 dark:to-indigo-900 dark:to-opacity-50 flex items-center justify-center overflow-hidden">
+          <div class="relative h-56 bg-gradient-to-br  flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white via-opacity-10 to-transparent -skew-x-12 transform translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000"></div>
-            <UIcon name="i-heroicons-cube" class="w-20 h-20 text-blue-400 text-opacity-60 group-hover:text-blue-500 group-hover:text-opacity-80 transition-colors duration-300" />
+            <UIcon name="i-heroicons-cube" class="w-20 h-20 text-primary-500 text-opacity-60 group-hover:text-primary-500 group-hover:text-opacity-80 transition-colors duration-300" />
 
             <!-- Category Badge - Floating -->
             <div class="absolute top-4 left-4">
@@ -247,7 +154,7 @@ const formatPrice = (price: number) => {
                   :label="supplement.category"
                   variant="soft"
                   color="primary"
-                  class="backdrop-blur-sm bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80 shadow-sm"
+                  class="backdrop-blur-sm bg-white bg-opacity-80  shadow-sm"
                   size="sm"
               />
             </div>
@@ -255,36 +162,27 @@ const formatPrice = (price: number) => {
             <!-- Quick Add Button -->
             <button
                 @click="addToCart(supplement)"
-                class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:scale-110"
+                class="absolute top-4 right-4 w-10 h-10 bg-primary-100 bg-opacity-90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:scale-110"
             >
-              <UIcon name="i-heroicons-plus" class="w-5 h-5 text-blue-600" />
+              <UIcon name="i-heroicons-plus" class="w-5 h-5 text-secondary" />
             </button>
           </div>
 
           <div class="relative p-6">
             <!-- Product Name -->
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 wellness-line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h3 class="text-xl font-bold text-primary-900 d mb-2 wellness-line-clamp-2 group-hover:text-secondary-400  transition-colors">
               {{ supplement.name }}
             </h3>
 
-            <!-- Manufacturer -->
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3 flex items-center">
-              <UIcon name="i-heroicons-building-office" class="w-4 h-4 mr-1" />
-              {{ supplement.manufacturer || 'Premium Brand' }}
-            </p>
 
             <!-- Dosage Info with Icon -->
-            <div class="flex items-center text-sm text-gray-600 dark:text-gray-300 mb-4 bg-gray-50 dark:bg-gray-700 dark:bg-opacity-50 rounded-lg p-2">
-              <UIcon name="i-heroicons-beaker" class="w-4 h-4 mr-2 text-blue-500" />
+            <div class="flex items-center text-sm text-primary-600 mb-4 bg-secondary-50  rounded-lg p-2">
+              <UIcon name="i-heroicons-beaker" class="w-3 h-3 mr-2 text-secondary-500" />
               <span class="font-medium">{{ supplement.dosageAmount }} {{ supplement.dosageUnit }}</span>
             </div>
 
             <!-- Benefits -->
-            <div class="mb-6">
-              <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center">
-                <UIcon name="i-heroicons-sparkles" class="w-4 h-4 mr-1 text-yellow-500" />
-                Key Benefits
-              </h4>
+            <div class="mb-4">
               <div class="flex flex-wrap gap-2">
                 <UBadge
                     v-for="benefit in supplement.benefits.slice(0, 2)"
@@ -292,8 +190,8 @@ const formatPrice = (price: number) => {
                     :label="benefit"
                     variant="outline"
                     color="primary"
-                    size="xs"
-                    class="hover:bg-blue-50 dark:hover:bg-blue-900 dark:hover:bg-opacity-20 transition-colors"
+                    size="sm"
+                    class="hover:bg-primary-50 ransition-colors"
                 />
                 <UBadge
                     v-if="supplement.benefits.length > 2"
@@ -306,9 +204,9 @@ const formatPrice = (price: number) => {
             </div>
 
             <!-- Price and Add to Cart -->
-            <div class="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div class="flex items-center justify-between pt-3 border-t border-gray-200 ">
               <div class="flex flex-col">
-                <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <span class="text-xl font-bold bg-gradient-to-r text-primary-600 bg-clip-text">
                   {{ formatPrice(supplement.price) }}
                 </span>
                 <span class="text-xs text-gray-500">per bottle</span>
@@ -408,7 +306,7 @@ const formatPrice = (price: number) => {
                   {{ formatPrice(cartTotal) }}
                 </span>
               </div>
-              <p class="text-sm text-gray-500 dark:text-gray-400">{{ cartItemCount }} item{{ cartItemCount > 1 ? 's' : '' }} in cart</p>
+              <p class="text-sm text-gray-500 ">{{ cartItemCount }} item{{ cartItemCount > 1 ? 's' : '' }} in cart</p>
             </div>
 
             <UButton color="primary" size="lg" block class="mb-3 hover:scale-105 transition-transform">

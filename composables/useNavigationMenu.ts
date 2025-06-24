@@ -1,6 +1,8 @@
 // composables/useNavigationMenu.ts
 import type { NavigationMenuItem } from '@nuxt/ui'
 
+import { ref } from 'vue';
+
 export const useNavigationMenu = () => {
     const items = ref<NavigationMenuItem[]>([
         {
@@ -31,18 +33,6 @@ export const useNavigationMenu = () => {
           label: 'YOUR TRACKER',
           icon: 'i-lucide-activity',
         },
-        // {
-        //     label: 'Login',
-        //     icon: 'i-lucide-user',
-        //     to: '/auth/login',
-        //     children: [
-        //         {
-        //             label: 'Register',
-        //             to: '/auth/register',
-        //             icon: 'i-lucide-user-plus'
-        //         }
-        //     ]
-        // }
     ]);
 
     return { items };

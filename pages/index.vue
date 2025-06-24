@@ -38,9 +38,8 @@
 
 
 <style scoped>
-/* --------------------------------------------------------- */
-/* 1. Container styles for the split card:                   */
-/* --------------------------------------------------------- */
+
+/* 1. Container styles for the split card: */
 .split-card {
   display: flex;
   align-items: center;
@@ -53,9 +52,8 @@
   gap: 1rem;           /* space between the two sides */
 }
 
-/* --------------------------------------------------------- */
-/* 2. Left side (text)                                         */
-/* --------------------------------------------------------- */
+
+/* 2. Left side (text)  */
 .split-card__text {
   flex: 1;            /* take up equal space */
 }
@@ -91,9 +89,8 @@
   background-color: #16301b;
 }
 
-/* --------------------------------------------------------- */
-/* 3. Right side (image)                                      */
-/* --------------------------------------------------------- */
+
+/* 3. Right side (image)    */
 .split-card__image {
   flex: 1;            /* take up equal space */
   display: flex;
@@ -108,13 +105,12 @@
   object-fit: contain;
 }
 
-/* --------------------------------------------------------- */
+
 /* 4. Responsive breakpoint: stack vertically on small screens */
-/* --------------------------------------------------------- */
 @media (max-width: 768px) {
   .split-card {
     flex-direction: column-reverse; /* image below text */
-    text-align: center;              /* center text on mobile */
+    text-align: center;
   }
   .split-card__text,
   .split-card__image {

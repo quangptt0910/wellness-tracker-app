@@ -1,29 +1,34 @@
 <script setup lang="ts">
+import type { LoginResponse, LoginCredentials } from "~/types/auth";
+import { useAuthStore } from "~/store/auth";
+
+
 definePageMeta({
   layout: 'auth'
 })
-// Reactive state
-const state = reactive({
-  email: '',
+
+const state = reactive<LoginCredentials>({
+  username: '',
   password: ''
 })
 
 const isLoading = ref(false)
 const toast = useToast()
+const authStore = useAuthStore()
 
 // Login method
 const submit = async () => {
   isLoading.value = true
   try {
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await authStore.login(state)
     toast.add({
       title: 'Login successful',
       description: 'Welcome back!',
       icon: 'i-heroicons-check-circle',
       color: 'primary'
     })
-    // await navigateTo('/dashboard')
-  } catch (error) {
+    await navigateTo('/')
+  } catch (error: any) {
     toast.add({
       title: 'Login failed',
       description: 'Invalid credentials',
@@ -49,8 +54,8 @@ const submit = async () => {
         </div>
 
       <UForm :state="state" @submit="submit" class="space-y-4">
-        <UFormField label="Email" name="email" required :ui="{label : 'text-base font-medium mb-3' }" >
-          <UInput class="w-full " v-model="state.email" type="email" placeholder="your@email.com" icon="i-heroicons-envelope" autofocus size="xl"/>
+        <UFormField label="Username" name="username" required :ui="{label : 'text-base font-medium mb-3' }" >
+          <UInput class="w-full " v-model="state.username" type="text" placeholder="your username" icon="i-heroicons-envelope" autofocus size="xl"/>
         </UFormField>
 
         <UFormField label="Password" name="password" required :ui="{ label : 'text-base font-medium mb-3'}" >
